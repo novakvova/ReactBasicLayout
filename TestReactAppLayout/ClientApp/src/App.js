@@ -1,14 +1,31 @@
 import React from 'react';
-import { Route } from 'react-router';
-import Layout from './components/Layout';
-import Home from './components/Home';
+/** Layouts **/  
+import LoginLayoutRoute from "./components/LoginLayout";  
+import DashboardRoute from "./components/DashboardLayout";  
+
+// import { Route } from 'react-router';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'; 
+
+
 import Counter from './components/Counter';
 import FetchData from './components/FetchData';
 
 export default () => (
-  <Layout>
-    <Route exact path='/' component={Home} />
-    <Route path='/counter' component={Counter} />
-    <Route path='/fetch-data/:startDateIndex?' component={FetchData} />
-  </Layout>
+  <div>
+      <Router>  
+        <Switch>  
+          <Route exact path="/">  
+            <Redirect to="/counter" />  
+          </Route>  
+          <LoginLayoutRoute path='/counter' component={Counter} />  
+          <DashboardRoute path='/fetch-data/:startDateIndex?' component={FetchData} />
+          </Switch>  
+      </Router>  
+    );  
+</div>
+  // <Layout>
+  //   <Route exact path='/' component={Home} />
+  //   <Route path='/counter' component={Counter} />
+  //   <Route path='/fetch-data/:startDateIndex?' component={FetchData} />
+  // </Layout>
 );

@@ -13,6 +13,7 @@ class FetchData extends Component {
   componentDidUpdate() {
     // This method is called when the route parameters change
     this.ensureDataFetched();
+    console.log('--render fetchDATA----');
   }
 
   ensureDataFetched() {
@@ -21,6 +22,7 @@ class FetchData extends Component {
   }
 
   render() {
+    
     return (
       <div>
         <h1>Weather forecast</h1>
